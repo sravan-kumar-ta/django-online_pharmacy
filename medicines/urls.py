@@ -12,6 +12,6 @@ urlpatterns = [
     # ####___admin urls___#### #
     path('add_admin/', admin_views.add_admin, name='add-admin'),
     path('manage_admin/', admin_views.manage_admin, name='manage-admin'),
-    path('update_admin/<int:admin_id>', admin_views.update_admin, name='update-admin'),
+    path('shop_admin/update_admin/<int:admin_id>', admin_views.update_admin, name='update-admin'),
     path('delete_admin/<int:admin_id>', admin_views.delete_admin, name='delete-admin')
 ]
