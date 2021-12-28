@@ -9,5 +9,6 @@ def home(request):
     return render(request, 'frontend/pages/index.html', {'categories': categories})
 
 
-def category(requset):
-    pass
+def categories(request):
+    categories = Category.objects.all()
+    return render(request, 'frontend/pages/categories.html', {'categories': categories})
