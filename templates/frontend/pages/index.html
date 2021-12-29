@@ -28,12 +28,8 @@
             {% for category in categories %}
 
               <div class="col-md-4 mb-4 mb-md-0">
-                <a class="category-item" href="#">
-                  {% if category.category_image %}
-                    <img class="img-fluid" src="{{ category.category_image.url }}" alt="{{ category.title }}">
-                    {% else %}
-                    <img class="img-fluid" src="{% static 'img/categ.jpg' %}" alt="{{ category.title }}">
-                  {% endif %}
+                <a class="category-item" href="{% url 'customer:medicine-list' category.slug %}">
+                  <img class="img-fluid" src="{% static 'img/categ.jpg' %}" alt="{{ category.title }}">
                   <strong class="category-item-title">{{ category.title }}</strong>
                 </a>
               </div>

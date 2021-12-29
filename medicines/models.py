@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -10,6 +11,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+    def get_url(self):
+        return reverse('category-products', args=[self.slug])
 
 
 class Medicine(models.Model):

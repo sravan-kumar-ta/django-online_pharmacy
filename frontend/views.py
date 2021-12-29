@@ -1,6 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from medicines.models import Category
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
+from django.shortcuts import render, get_object_or_404
+from medicines.models import Category, Medicine
 
 
 # Create your views here.
@@ -10,5 +10,18 @@ def home(request):
 
 
 def categories(request):
-    categories = Category.objects.all()
-    return render(request, 'frontend/pages/categories.html', {'categories': categories})
+    all_categories = Category.objects.all()
+    return render(request, 'frontend/pages/categories.html', {'categories': all_categories})
+
+
+def category_medicines(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    medicines = Medicine.objects.filter(is_active=True, category=category)
+    all_categories = Category.objects.all()
+
+    context = {
+        'category': category,
+        'medicines': medicines,
+        'categories': all_categories,
+    }
+    return render(request, 'frontend/pages/category_products.html', context)
