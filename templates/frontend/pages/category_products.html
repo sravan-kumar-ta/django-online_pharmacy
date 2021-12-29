@@ -116,7 +116,7 @@
                 <div class="row">
 
                   {% if medicines %}
-                    {% for medicine in medicines %}
+                    {% for medicine in medicines.object_list %}
                     
                       <!-- PRODUCT-->
                       <div class="col-lg-4 col-sm-6">
@@ -158,6 +158,23 @@
 
 
                 </div>
+                <!-- PAGINATION-->
+
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center justify-content-lg-end">
+                    {% if medicines.has_previous %}
+                      <li class="page-item"><a class="page-link" href="?page={{medicines.previous_page_number}}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                    {% endif %}
+
+                    {% for page_number in medicines.paginator.page_range %}
+                      <li class="page-item {% if medicines.number == page_number %} active {% endif %}"><a class="page-link" href="?page={{page_number}}">{{page_number}}</a></li>
+                    {% endfor %}
+
+                    {%if medicines.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{medicines.next_page_number}}" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
