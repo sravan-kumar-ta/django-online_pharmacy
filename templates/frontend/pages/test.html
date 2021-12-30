@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>title</th>
+            <th>Image</th>
+            <th>url</th>
+        </tr>
+        {% for medicine in medicines.object_list %}
+            <tr>
+                <td>{{medicine.title}}</td>
+                <td>
+                    <img src="{{medicine.image.url}}">
+                </td>
+                <td>Null</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

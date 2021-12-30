@@ -53,9 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'account.loginCheckMiddleware.LoginCheckMiddleware',
+    # 'account.loginCheckMiddleware.LoginCheckMiddleware',
 ]
-
+    
 ROOT_URLCONF = 'pharmacy.urls'
 
 TEMPLATES = [

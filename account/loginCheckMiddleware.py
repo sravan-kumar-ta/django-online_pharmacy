@@ -17,4 +17,7 @@ class LoginCheckMiddleware(MiddlewareMixin):
             if request.path == reverse("login") or request.path == reverse("registration") or modulename == 'frontend.views':
                 pass
             else:
-                return HttpResponseRedirect(reverse("login"))
+                if modulename == "account.admin_views":
+                    return HttpResponseRedirect(reverse("login"))
+                else:
+                    return HttpResponseRedirect(reverse("customer-login"))
