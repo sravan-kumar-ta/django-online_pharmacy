@@ -14,7 +14,6 @@ def add_admin(request):
                                                first_name=first_name, user_type=2)
         admin.save()
         return redirect('manage-admin')
-
     else:
         return render(request, 'admin/admin.html')
 
