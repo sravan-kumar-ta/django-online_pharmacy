@@ -42,23 +42,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for admin in admins %}
+                {% for customer in customers %}
                   <tr>
-                    <td>{{ admin.first_name }} {{ admin.last_name }}</td>
-                    <td>{{ admin.username }}</td>
+                    <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+                    <td>{{ customer.username }}</td>
                     <td>
-                      {% if admin.joined_at %}
-                        {{ admin.joined_at }}
+                      {% if customer.joined_at %}
+                        {{ customer.joined_at }}
                       {% else %}
                         not specified
                       {% endif %}
                     </td>
                     <td>
-                      <a href="{% url 'delete-admin' admin.id %}">
+                      <a href="{% url 'delete-customer' customer.id %}">
                         <button type="button" class="btn btn-block btn-danger" style="margin-bottom:10px">Delete</button>
                       </a>
-                      <a href="{% url 'update-admin' admin.id %}">
-                        <button type="button" class="btn btn-block bg-gradient-warning">Update</button>
+                      <a href="{% url 'view-customer' customer.id %}">
+                        <button type="button" class="btn btn-block bg-gradient-warning">View</button>
                       </a>
                     </td>
                   </tr>

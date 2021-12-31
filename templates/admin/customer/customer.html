@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>General Form</h1>
+            <h1>{{customer.first_name}} {{customer.last_name}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,67 +26,25 @@
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
-          <div class="col-md-6">
+          <div class="col-md-8">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">You can add admin through this form</h3>
+                <h3 class="card-title">Purchased Items</h3>
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" method="POST">
-                {% csrf_token %}
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="m_name">First Name</label>
-                        <input type="text" value="{{admin.first_name}}" name="f_name" class="form-control" id="m_name" placeholder="Enter first name">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="m_sname">Second Name</label>
-                        <input type="text" value="{{admin.last_name}}" name="s_name" class="form-control" id="m_sname" placeholder="Enter second name">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                      <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" value="{{admin.username}}" name="username" class="form-control" id="username" placeholder="Enter username">
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" value="{{admin.email}}" name="email" class="form-control" id="email" placeholder="Enter email">
-                      </div>
-                  </div>
-                  {% url 'add-admin' as add_admin %}
-                  {% if request.path == add_admin %}
-                    <div class="form-group">
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password" value="{{admin.password}}" name="password" class="form-control" id="password" placeholder="Enter password">
-                        </div>
-                    </div>
-                  {% endif %}
+              <div class="card-body">
+                <div class="alert alert-warning alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                    {{customer.first_name}} has no items purchased yet.
                 </div>
-                <!-- /.card-body -->
-                {% url 'add-admin' as add_admin %}
-                {% if request.path == add_admin %}
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary float-right">Add Admin</button>
-                  </div>
-                {% else %}
-                  <div class="card-footer">
-                    <a href="">
-                      <button class="btn btn-primary float-right">Update Admin</button>
-                    </a>
-                  </div>
-                {% endif %}
-              </form>
+              </div>
+              <div class="card-footer">
+                <a href="{% url 'manage-customer' %}">
+                  <button class="btn btn-primary float-right">Back to all customers</button>
+                </a>
+              </div>
             </div>
             <!-- /.card -->
 

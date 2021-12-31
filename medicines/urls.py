@@ -19,8 +19,7 @@ urlpatterns = [
     path('delete_admin/<int:admin_id>', admin_views.delete_admin, name='delete-admin'),
 
     # ####___customer urls___#### #
-    path('add_customer/', customer_views.add_customer, name='add-customer'),
     path('manage_customer/', customer_views.manage_customer, name='manage-customer'),
-    path('update_customer/<int:customer_id>', customer_views.update_customer, name='update-customer'),
+    path('view_customer/<int:customer_id>', customer_views.view_customer, name='view-customer'),
     path('delete_customer/<int:customer_id>', customer_views.delete_customer, name='delete-customer'),
 ]
