@@ -9,7 +9,7 @@ def category_medicines(request, slug):
     medicines = Medicine.objects.filter(is_active=True, category=category)
     all_categories = Category.objects.all()
 
-    paginator = Paginator(medicines, 3)
+    paginator = Paginator(medicines, 6)
     try:
         page = int(request.GET.get('page', '1'))
     except:
@@ -25,3 +25,14 @@ def category_medicines(request, slug):
         'categories': all_categories,
     }
     return render(request, 'frontend/pages/category_products.html', context)
+
+
+def detail_of_medicines(request, c_slug, m_slug):
+    medicine = get_object_or_404(Medicine, slug=m_slug)
+    related_medicines = Medicine.objects.exclude(id=medicine.id).filter(is_active=True, category__slug=c_slug)
+
+    context = {
+        'medicine': medicine,
+        'related_medicines': related_medicines,
+    }
+    return render(request, 'frontend/pages/detail.html', context)

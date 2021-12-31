@@ -13,7 +13,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def get_url(self):
-        return reverse('category-products', args=[self.slug])
+        return reverse('customer:medicine-list', args=[self.slug])
 
 
 class Medicine(models.Model):
@@ -27,3 +27,6 @@ class Medicine(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_url(self):
+        return reverse('customer:medicine-detail', args=[self.category.slug, self.slug])

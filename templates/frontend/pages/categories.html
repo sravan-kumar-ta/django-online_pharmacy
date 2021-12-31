@@ -5,9 +5,6 @@
 
       <!-- HERO SECTION-->
       <div class="container">
-        
-
-
         <!-- CATEGORIES SECTION-->
         <section class="pt-5">
           <header class="text-center">
@@ -19,7 +16,7 @@
             {% for category in categories %}
 
               <div class="col-md-4 mb-4 mb-md-5">
-                <a class="category-item" href="">
+                <a class="category-item" href="{{ category.get_url }}">
                   {% if category.image %}
                     <img class="img-fluid" src="{{ category.image.url }}" alt="{{ category.title }}">
                     {% else %}
@@ -33,10 +30,6 @@
           {% endif %}
           </div>
         </section>
-
-
-        
-
 
         <!-- SERVICES-->
         <section class="py-5 bg-light">

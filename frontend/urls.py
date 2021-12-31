@@ -11,4 +11,5 @@ urlpatterns = [
     path('log_out/', views.do_logout, name="logout"),
 
     path('<slug:slug>/', customer_views.category_medicines, name="medicine-list"),
+    path('<slug:c_slug>/<slug:m_slug>/', customer_views.detail_of_medicines, name="medicine-detail"),
 ]
