@@ -1,0 +1,77 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+    {% block content %}
+
+      <div class="container py-5">
+        <div class="col-md-8 offset-2">
+
+        <h1 class="mb-5">Create Your Account</h1>
+        
+        
+        <div class="card mb-4" id="forms">
+          <div class="card-header">
+            <small>
+            With this account, you can save time during checkout, access your shopping bag from any device and view your order history.
+            </small>
+          </div>
+          <div class="card-body">
+
+            {% include 'frontend/pages/partials/_messages.html' %}
+
+            <form method="post" action="">
+              <fieldset>
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_first_name">First name:</label>
+                        <input type="text" name="f_name" class="form-control" placeholder="First Name" required id="id_first_name" autofocus>
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_last_name">Last name:</label>
+                        <input type="text" name="l_name" class="form-control" placeholder="Last Name" required id="id_last_name">
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_username">Username:</label>
+                        <input type="text" name="username" class="form-control" placeholder="Username" maxlength="150" required id="id_username">
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_email">Email:</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email Address" required id="id_email">
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_password1">Password:</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required id="id_password1">
+                        <small class="text-danger"></small>
+                    </div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </fieldset>
+
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger alert-dismissible fade show" role="alert" my-3">
+                        {{error}}
+                    </p>
+                {% endfor %}
+              {% endif %}
+
+            </form>
+
+            <hr>
+
+            Already have an account? <a href="{% url 'customer:login' %}">Log In </a>
+            
+          </div>
+        </div>
+
+        </div>       
+      </div>
+{% endblock content %}
