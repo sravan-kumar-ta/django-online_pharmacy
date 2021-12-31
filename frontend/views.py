@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 
 from account.EmailBackend import EmailBackEnd
@@ -49,5 +49,10 @@ def do_login(request):
                 messages.error(request, "Invalid Login")
                 return redirect('customer:login')
         except:
-                messages.error(request, "Invalid Login")
-                return redirect('customer:login')
+            messages.error(request, "Invalid Login")
+            return redirect('customer:login')
+
+
+def do_logout(request):
+    logout(request)
+    return redirect('customer:home')
