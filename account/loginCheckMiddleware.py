@@ -14,9 +14,7 @@ class LoginCheckMiddleware(MiddlewareMixin):
                 else:
                     return HttpResponseRedirect(reverse("home"))
             elif user.user_type == "3":
-                if modulename == "account.admin_views":
-                    return HttpResponseRedirect(reverse("logout"))
-                if modulename == 'frontend.customer_views':
+                if modulename == 'frontend.customer_views' or modulename == 'frontend.views':
                     pass
             else:
                 return HttpResponseRedirect(reverse("login"))

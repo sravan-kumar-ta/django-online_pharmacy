@@ -27,7 +27,7 @@ def do_login(request):
     else:
         try:
             user = EmailBackEnd.authenticate(request, username=request.POST.get("email"),
-                                             password=request.POST.get("password"))
+                                             password=request.POST.get("password"), user_type=str(2))
             if user is not None:
                 login(request, user)
                 return redirect('home')

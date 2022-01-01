@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from account.models import CustomUser
 
@@ -15,4 +15,6 @@ def view_customer(request, customer_id):
 
 
 def delete_customer(request, customer_id):
-    pass
+    customer = get_object_or_404(CustomUser, id=customer_id)
+    customer.delete()
+    return redirect('manage-customer')

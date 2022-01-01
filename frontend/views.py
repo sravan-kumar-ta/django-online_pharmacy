@@ -42,15 +42,18 @@ def do_login(request):
     else:
         try:
             user = EmailBackEnd.authenticate(request, username=request.POST.get("email"),
-                                             password=request.POST.get("password"))
+                                             password=request.POST.get("password"), user_type=str(3))
             if user is not None:
                 login(request, user)
+                print('inner sravan')
                 return redirect('customer:home')
             else:
                 messages.error(request, "Invalid Login")
+                print('inner sravan2')
                 return redirect('customer:login')
         except:
             messages.error(request, "Invalid Login")
+            print('inner sravan23')
             return redirect('customer:login')
 
 
