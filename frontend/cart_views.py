@@ -1,3 +1,5 @@
+import decimal
+
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -8,7 +10,24 @@ from medicines.models import Medicine
 def cart(request):
     user = request.user
     cart_medicines = Cart.objects.filter(user=user)
-    return render(request, 'frontend/pages/cart.html', {'cart_medicines': cart_medicines})
+
+    # Display Total on Cart Page
+    amount = decimal.Decimal(0)
+    shipping_amount = decimal.Decimal(10)
+    # using list comprehension to calculate total amount based on quantity and shipping
+    cp = [p for p in Cart.objects.all() if p.user == user]
+    if cp:
+        for p in cp:
+            temp_amount = (p.quantity * p.medicine.price)
+            amount += temp_amount
+
+    context = {
+        'cart_medicines': cart_medicines,
+        'amount': amount,
+        'shipping_amount': shipping_amount,
+        'total_amount': amount + shipping_amount,
+    }
+    return render(request, 'frontend/pages/cart.html', context)
 
 
 def add_cart(request):
