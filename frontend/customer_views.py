@@ -2,6 +2,7 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.shortcuts import get_object_or_404, render
 
 from medicines.models import Medicine, Category
+from .models import Order
 
 
 def category_medicines(request, slug):
@@ -36,3 +37,8 @@ def detail_of_medicines(request, c_slug, m_slug):
         'related_medicines': related_medicines,
     }
     return render(request, 'frontend/pages/detail.html', context)
+
+
+def profile(request):
+    orders = Order.objects.filter(user=request.user).order_by("-id")
+    return render(request, 'frontend/pages/auth/profile.html', {'orders': orders})

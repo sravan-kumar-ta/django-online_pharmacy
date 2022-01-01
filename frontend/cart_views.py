@@ -3,7 +3,7 @@ import decimal
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 
-from frontend.models import Cart
+from frontend.models import Cart, Order
 from medicines.models import Medicine
 
 
@@ -72,3 +72,15 @@ def minus_cart(request, cart_id):
             medicine.quantity -= 1
             medicine.save()
     return redirect('customer:cart')
+
+
+def checkout(request):
+    user = request.user
+    cart_list = Cart.objects.filter(user=user)
+
+    for item in cart_list:
+        order_list = Order(user=user, medicine=item.medicine, quantity=item.quantity)
+        order_list.save()
+        item.delete()
+
+    return redirect('customer:profile')

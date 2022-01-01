@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from account.models import CustomUser
+from frontend.models import Order
 
 
 # Create your views here.
@@ -11,7 +12,8 @@ def manage_customer(request):
 
 def view_customer(request, customer_id):
     customer = get_object_or_404(CustomUser, id=customer_id)
-    return render(request, 'admin/customer/customer.html', {'customer': customer})
+    order_list = Order.objects.filter(user=customer_id).order_by('-id')
+    return render(request, 'admin/customer/customer.html', {'customer': customer, 'order_list': order_list})
 
 
 def delete_customer(request, customer_id):

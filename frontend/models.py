@@ -15,3 +15,10 @@ class Cart(models.Model):
     @property
     def total_price(self):
         return self.quantity * self.medicine.price
+
+
+class Order(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    medicine = models.ForeignKey(Medicine, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Quantity")
+    ordered_date = models.DateTimeField(auto_now_add=True)
