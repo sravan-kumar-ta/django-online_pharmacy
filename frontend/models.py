@@ -1,3 +1,17 @@
 from django.db import models
+from account.models import CustomUser
+from medicines.models import Medicine
 
-# Create your models here.
+
+class Cart(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name="User", on_delete=models.CASCADE)
+    medicine = models.ForeignKey(Medicine, verbose_name="Medicine", on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1, verbose_name="Quantity")
+
+    def __str__(self):
+        return str(self.user)
+
+    # Creating Model Property to calculate Quantity x Price
+    @property
+    def total_price(self):
+        return self.quantity * self.medicine.price

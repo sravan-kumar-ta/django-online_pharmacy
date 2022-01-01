@@ -48,8 +48,8 @@
                 <div class="col-sm-3 pl-sm-0">
                   {% comment %} <a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="{% url 'cart:add-to-cart' %}">Add to cart</a> {% endcomment %}
 
-                  <form action="">
-                    <input type="hidden" name="prod_id" value="{{medicine.id}}" id="medicine_id">
+                  <form action="{% url 'customer:add-to-cart' %}">
+                    <input type="hidden" name="medicine_id" value="{{medicine.id}}" id="medicine_id">
                     <button type="submit" class="btn btn-dark btn-lg btn-block h-100 d-flex align-items-center justify-content-center px-0">Add to Cart</button>
                   </form>
 

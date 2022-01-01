@@ -4,13 +4,14 @@ from django.shortcuts import render, redirect
 
 from account.EmailBackend import EmailBackEnd
 from account.models import CustomUser
-from medicines.models import Category
+from medicines.models import Category, Medicine
 
 
 # Create your views here.
 def home(request):
     categories = Category.objects.all()[:3]
-    return render(request, 'frontend/pages/index.html', {'categories': categories})
+    medicines = Medicine.objects.order_by('?')[:8]  # fetching random object
+    return render(request, 'frontend/pages/index.html', {'categories': categories, 'medicines': medicines})
 
 
 def categories(request):

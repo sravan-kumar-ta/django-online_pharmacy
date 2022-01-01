@@ -36,12 +36,12 @@
                   <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart mr-1"></i><small class="text-gray"> (0)</small></a></li>
                   {% comment %} <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-user-alt mr-1 text-gray"></i>My Account</a></li> {% endcomment %}
 
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt mr-1 text-gray"></i>My Account</a></a>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt mr-1 text-gray"></i>{{user.first_name}}</a></a>
                   
                   <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
                     
                       <a class="dropdown-item border-0 transition-link" href="#">Profile</a>
-                      <a class="dropdown-item border-0 transition-link" href="#">Cart</a>
+                      <a class="dropdown-item border-0 transition-link" href="{% url 'customer:cart' %}">Cart</a>
                       <a class="dropdown-item border-0 transition-link" href="#">Orders</a>
                       <a class="dropdown-item border-0 transition-link" href="#">Change Password</a>
 
