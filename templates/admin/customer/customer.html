@@ -40,6 +40,7 @@
                       <tr>
                         <th>Medicine Name</th>
                         <th>Quantity</th>
+                        <th>Date of ordering</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,7 @@
                         <tr>
                           <td>{{item.medicine.title}}</td>
                           <td>{{item.quantity}}</td>
+                          <td>{{item.ordered_date}}</td>
                         </tr>
                       {% endfor %}
                     </tbody>
