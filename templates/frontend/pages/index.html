@@ -48,6 +48,7 @@
           </header>
           <div class="row">
 
+          {% if request.user.is_authenticated %}
             {% if medicines %}
               {% for medicine in medicines %}
               
@@ -88,8 +89,7 @@
 
               {% endfor %}
             {% endif %}
-
-            
+          {% endif %}
 
           </div>
         </section>

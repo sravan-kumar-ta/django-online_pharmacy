@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 
@@ -32,9 +32,11 @@ def do_login(request):
                 login(request, user)
                 return redirect('home')
             else:
-                return HttpResponse("<h1>Invalid Login</h1>")
+                messages.error(request, "Invalid Login")
+                return redirect('login')
         except:
-            return HttpResponse("<h1>Invalid Login</h1>")
+            messages.error(request, "Invalid Login")
+            return redirect('login')
 
 
 def do_logout(request):
