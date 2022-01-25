@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'account.loginCheckMiddleware.LoginCheckMiddleware',
+    # 'account.loginCheckMiddleware.LoginCheckMiddleware',
 ]
     
 ROOT_URLCONF = 'pharmacy.urls'
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'pharmacy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pharmacy',
+        'NAME': 'pharmacy_master',
         'USER': 'pharmacy',
         'PASSWORD': 'password2',
         'HOST': 'localhost',
@@ -142,6 +142,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = ["account.EmailBackend.EmailBackEnd"]
+# AUTHENTICATION_BACKENDS = ["account.EmailBackend.EmailBackEnd"]
 
 AUTH_USER_MODEL = "account.CustomUser"
