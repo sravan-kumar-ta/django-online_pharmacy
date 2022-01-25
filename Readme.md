@@ -1,9 +1,9 @@
 # django-online-pharmacy
 
 <h2>In this project...</h2>
-#### CustomUserModel(Abstract django's default user model)
+<h4>CustomUserModel(Abstract django's default user model)</h4>
 <h4>Custom Backend (Email authentication)</h4>
-#### MiddlewareMixin (LoginCheckMiddleware)
+<h4>MiddlewareMixin (LoginCheckMiddleware)</h4>
 <h4>Context preprocessor</h4>
 
 ## Models
