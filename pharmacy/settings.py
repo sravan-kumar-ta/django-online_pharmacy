@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'frontend.context_preprocessors.nav_categories',
+                'frontend.context_preprocessors.cart_medicine',
             ],
         },
     },
@@ -84,12 +85,14 @@ WSGI_APPLICATION = 'pharmacy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pharmacy_master',
-        'USER': 'pharmacy',
-        'PASSWORD': 'password2',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'pharmacy_master',
+        # 'USER': 'pharmacy',
+        # 'PASSWORD': 'password2',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -142,6 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# AUTHENTICATION_BACKENDS = ["account.EmailBackend.EmailBackEnd"]
+AUTHENTICATION_BACKENDS = ["account.EmailBackend.EmailBackEnd"]
 
 AUTH_USER_MODEL = "account.CustomUser"
