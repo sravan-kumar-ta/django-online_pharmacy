@@ -32,18 +32,21 @@ def cart(request):
 
 def add_cart(request):
     user = request.user
-    medicine_id = request.GET.get('medicine_id')
-    medicine = get_object_or_404(Medicine, id=medicine_id)
-
-    item_already_in_cart = Cart.objects.filter(medicine=medicine_id, user=user)
-    if item_already_in_cart:
-        cart_medicines = get_object_or_404(Cart, medicine=medicine_id, user=user)
-        cart_medicines.quantity += 1
-        cart_medicines.save()
+    if not request.user.is_authenticated:
+        return redirect('customer:login')
     else:
-        Cart(user=user, medicine=medicine).save()
+        medicine_id = request.GET.get('medicine_id')
+        medicine = get_object_or_404(Medicine, id=medicine_id)
 
-    return redirect('customer:cart')
+        item_already_in_cart = Cart.objects.filter(medicine=medicine_id, user=user)
+        if item_already_in_cart:
+            cart_medicines = get_object_or_404(Cart, medicine=medicine_id, user=user)
+            cart_medicines.quantity += 1
+            cart_medicines.save()
+        else:
+            Cart(user=user, medicine=medicine).save()
+
+        return redirect('customer:cart')
 
 
 def remove_cart(request, cart_id):

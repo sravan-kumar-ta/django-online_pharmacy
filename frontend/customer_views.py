@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.shortcuts import get_object_or_404, render
 
@@ -39,6 +40,7 @@ def detail_of_medicines(request, c_slug, m_slug):
     return render(request, 'frontend/pages/detail.html', context)
 
 
+@login_required(login_url='/log_in/')
 def profile(request):
     orders = Order.objects.filter(user=request.user).order_by("-id")
     return render(request, 'frontend/pages/auth/profile.html', {'orders': orders})

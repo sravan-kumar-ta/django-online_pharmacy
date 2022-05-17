@@ -47,12 +47,10 @@
             <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
           </header>
           <div class="row">
-
-          {% if request.user.is_authenticated %}
             {% if medicines %}
               {% for medicine in medicines %}
               
-                <!-- PRODUCT-->
+                <!-- PRODUCTS -->
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                   <div class="product text-center">
                     <div class="position-relative mb-3">
@@ -61,7 +59,7 @@
                       
                       <a class="d-block" href="{{medicine.get_url}}">
                         {% if medicine.image %}
-                          <img class="img-fluid w-100" src="{{ medicine.image.url }}" alt="{{medicine.title}}">
+                          <img class="img-fluid w-100" src="{{ medicine.image.url }}" alt="{{medicine.title}}" style="max-height: 250px;">
                         {% else %}
                           <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="{{medicine.title}}">
                         {% endif %}
@@ -89,8 +87,6 @@
 
               {% endfor %}
             {% endif %}
-          {% endif %}
-
           </div>
         </section>
 
